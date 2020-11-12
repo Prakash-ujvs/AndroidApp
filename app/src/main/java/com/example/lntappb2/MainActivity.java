@@ -1,18 +1,16 @@
 package com.example.lntappb2;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import com.example.lntappb2.database.DbAccessObj;
-
 public class MainActivity extends AppCompatActivity {
-
     private static final String TAG = MainActivity.class.getSimpleName() ;
     public static final String MYPREFS = "myprefs";
     public static final String NAMEKEY = "namekey";
@@ -26,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG,"onCreate");
         nameEditText =  findViewById(R.id.editTextName);
         pwdEditText = findViewById(R.id.editTextPwd);
-        dbAccessObj = new DbAccessObj();
+
+        dbAccessObj = new DbAccessObj(this);
+        dbAccessObj.openDb();
     }
 
     @Override
@@ -34,20 +34,17 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         Log.i(TAG,"onStart");
     }
-
     @Override
     protected void onPause() {
         super.onPause();
         Log.i(TAG,"onpause");
         saveData();
     }
-
     /**
      * this method will save data from edittexts into a sharedprefs
      */
     private void saveData() {
         Log.i(TAG,"saveData");
-
         //get the data from the edittext
         String name = nameEditText.getText().toString();
         String pwd = pwdEditText.getText().toString();
@@ -61,17 +58,14 @@ public class MainActivity extends AppCompatActivity {
         //save the file
         editor.apply();
     }
-
     @Override
     protected void onResume() {
         super.onResume();
         Log.i(TAG,"onresume");
         restoreData();
     }
-
     private void restoreData(){
         Log.i(TAG,"restoreData");
-
         //open the file
         SharedPreferences preferences = getSharedPreferences(MYPREFS,MODE_PRIVATE);
         //read the file
@@ -81,41 +75,34 @@ public class MainActivity extends AppCompatActivity {
         nameEditText.setText(name);
         pwdEditText.setText(pwd);
     }
-
     @Override
     protected void onStop() {
         super.onStop();
         Log.i(TAG,"onstop");
-
     }
-
     public void clickHandler(View view) {
         Log.e(TAG,"clickHandler");
-
         switch (view.getId()){
             case R.id.buttonlogin:
                 startHome();
                 break;
             case R.id.buttoncancel:
                 Intent dialIntent =new Intent(Intent.ACTION_VIEW,  Uri.parse("tel:12345678" ));
-                        //"//http://www.google.com"));
-                        //new Intent(Intent.ACTION_DIAL, Uri.parse("tel:1234567"));
+                //"//http://www.google.com"));
+                //new Intent(Intent.ACTION_DIAL, Uri.parse("tel:1234567"));
                 startActivity(dialIntent);
                 break;
         }
     }
-
     private void startHome() {
         Intent hIntent = new Intent(MainActivity.this, HomeActivity.class);
         hIntent.putExtra("mykey","abdul");
         int c = add(10,20);
         startActivity(hIntent);
     }
-
     private int add(int a, int b) {
         return a+b;
     }
-
     public void handleDb(View view) {
         switch (view.getId()){
             case R.id.buttonput:
@@ -124,6 +111,11 @@ public class MainActivity extends AppCompatActivity {
                 dbAccessObj.createRow(title,subtitle);
                 break;
             case R.id.buttonget:
+                //get the data from db
+                String data = dbAccessObj.readRow();
+                //set the data onto textview
+                TextView dbTextView = findViewById(R.id.textViewdb);
+                dbTextView.setText(data);
                 break;
         }
     }
