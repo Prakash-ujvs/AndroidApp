@@ -43,4 +43,8 @@ public class DbAccessObj {
     }
     private void updateRow(){}
     private void deleteRow(){}
+    public Cursor getRows() {
+        Cursor cursor = database.query(FeedEntry.TABLE_NAME,null,null,null,null,null,null);
+        return cursor;
+    }
 }
