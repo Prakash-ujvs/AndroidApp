@@ -1,4 +1,4 @@
-package com.example.lntappb2;
+package com.example.lntapp2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.lntappb2.R;
 
 public class HomeActivity extends AppCompatActivity {
     String[] languages;
@@ -17,7 +19,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Log.w(TAG,"onCreate");
-        languages = new String[]{"english","hindi","urdu","kannada"};
+        languages = new String[]{"English","Hindi","Telugu","kannada"};
         //get the intent which started this activity
         Intent intent = getIntent();
         //from the intent get the extras

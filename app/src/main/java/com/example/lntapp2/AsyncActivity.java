@@ -1,4 +1,4 @@
-package com.example.lntappb2;
+package com.example.lntapp2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.example.lntappb2.R;
 
 public class AsyncActivity extends AppCompatActivity {
     private static final String TAG = AsyncActivity.class.getSimpleName();

@@ -1,5 +1,7 @@
 package com.example.lntappb2;
 
+import com.example.lntapp2.Calculator;
+
 import junit.framework.TestCase;
 
 public class CalculatorTest extends TestCase {

@@ -1,4 +1,4 @@
-package com.example.lntappb2;
+package com.example.lntapp2;
 
 import android.os.AsyncTask;
 import android.widget.TextView;

@@ -1,4 +1,4 @@
-package com.example.lntappb2.database;
+package com.example.lntapp2.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,7 +7,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.example.lntappb2.database.FeedReaderContract.FeedEntry;
+import com.example.lntapp2.database.FeedReaderContract.FeedEntry;
 
 /**
  * This class will help me create a  db  n a  table in db

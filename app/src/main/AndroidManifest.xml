@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS"/>
 
     <application
         android:allowBackup="true"
@@ -13,19 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LntAppb2">
         <service
-            android:name=".MusicService"></service>
+            android:name="com.example.lntapp2.MusicService"></service>
 
-        <receiver android:name=".SmsReceiver">
+        <receiver android:name="com.example.lntapp2.SmsReceiver">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
 
-        <activity android:name=".AsyncActivity">
+        <activity android:name="com.example.lntapp2.AsyncActivity">
         </activity>
-        <activity android:name=".RecyclerActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".MainActivity" >
+        <activity android:name="com.example.lntapp2.RecyclerActivity" />
+        <activity android:name="com.example.lntapp2.HomeActivity" />
+        <activity android:name="com.example.lntapp2.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,10 +1,12 @@
-package com.example.lntappb2;
+package com.example.lntapp2;
 
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.widget.Toast;
+
+import com.example.lntappb2.R;
 
 public class MusicService extends Service {
     public MusicService() {

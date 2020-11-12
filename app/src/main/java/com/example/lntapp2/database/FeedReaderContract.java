@@ -1,4 +1,4 @@
-package com.example.lntappb2.database;
+package com.example.lntapp2.database;
 
 import android.provider.BaseColumns;
 

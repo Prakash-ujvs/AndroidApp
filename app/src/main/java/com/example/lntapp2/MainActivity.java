@@ -1,4 +1,4 @@
-package com.example.lntappb2;
+package com.example.lntapp2;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,8 +12,9 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.example.lntappb2.database.DbAccessObj;
-import com.example.lntappb2.database.FeedReaderContract.FeedEntry;
+
+import com.example.lntapp2.database.DbAccessObj;
+import com.example.lntappb2.R;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName() ;
@@ -39,12 +40,16 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         Log.i(TAG,"onStart");
         ListView dbListView = findViewById(R.id.dblistview);
-        Cursor dataCursor = dbAccessObj.getRows();
+        //Cursor dataCursor = dbAccessObj.getRows();
+        Uri uriSms = Uri.parse("content://sms/inbox");
+        Cursor dataCursor = getContentResolver().query(uriSms,null,null,null,null);
+
         //put the data into adapter
         CursorAdapter adapter = new SimpleCursorAdapter(this,
                 R.layout.row_listview,
                 dataCursor,
-                new String[]{FeedEntry.COLUMN_NAME_TITLE,FeedEntry.COLUMN_NAME_SUBTITLE},
+                //new String[]{FeedEntry.COLUMN_NAME_TITLE,FeedEntry.COLUMN_NAME_SUBTITLE},
+                new String[]{"body","address"},
                 //"title","subtitle"},
                 new int[] {R.id.textviewRow,R.id.textViewsubtitle});
         //set the adapter onto the listview
@@ -100,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
         Log.e(TAG,"clickHandler");
         switch (view.getId()){
             case R.id.buttonlogin:
-                startHome();
+                getCredentials();
+                //startHome();
                 break;
             case R.id.buttoncancel:
                 Intent dialIntent =new Intent(Intent.ACTION_VIEW,  Uri.parse("tel:12345678" ));
@@ -110,6 +116,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
+    private void getCredentials() {
+        dbAccessObj.query(nameEditText.getText().toString());
+    }
+
     private void startHome() {
         Intent hIntent = new Intent(MainActivity.this, HomeActivity.class);
         hIntent.putExtra("mykey","abdul");
