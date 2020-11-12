@@ -43,19 +43,53 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
-        android:text="login"
         android:onClick="clickHandler"
+        android:text="login"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttoncancel"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttoncancel"
-        android:onClick="clickHandler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="29dp"
         android:layout_marginTop="24dp"
+        android:onClick="clickHandler"
         android:text="@android:string/cancel"
         app:layout_constraintStart_toEndOf="@+id/buttonlogin"
         app:layout_constraintTop_toBottomOf="@+id/switch1" />
+
+
+    <TextView
+        android:id="@+id/textViewdb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="33dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonput"
+        android:onClick="handleDb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="6dp"
+        android:text="put"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextName"
+        app:layout_constraintStart_toEndOf="@+id/editTextName" />
+
+    <Button
+        android:id="@+id/buttonget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginBottom="7dp"
+        android:text="get"
+        android:onClick="handleDb"
+
+        app:layout_constraintBottom_toBottomOf="@+id/editTextPwd"
+        app:layout_constraintStart_toEndOf="@+id/editTextPwd" />
 </androidx.constraintlayout.widget.ConstraintLayout>

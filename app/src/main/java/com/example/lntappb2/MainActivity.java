@@ -112,4 +112,13 @@ public class MainActivity extends AppCompatActivity {
     private int add(int a, int b) {
         return a+b;
     }
+
+    public void handleDb(View view) {
+        switch (view.getId()){
+            case R.id.buttonput:
+                break;
+            case R.id.buttonget:
+                break;
+        }
+    }
 }
